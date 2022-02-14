@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Bawnk! Join the fun!</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="imgareaselect-animated.css">
+		<link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
+	</head>
+	<body class="signin-fail blur">
+		<div class="shade"></div>
+		<header id="header" class="width">
+			<a href="http://dev.marksleblanc.com/client/bawnk/">
+				<img src="images/bawnk-logo.png" class="logo" height="82" alt="Bawnk">
+			</a>
+			<div class="right">
+				<a href="javascript:void(0);" class="login-toggle">Member Login</a>
+			</div>
+		</header>
+		<section id="photo-add">
+			<div class="modal-container">
+				<h2>Step 3. Upload Your Photo</h2>
+				<div class="details">
+					<div class="left main-image">
+						<img src="images/missing-photo.png">
+					</div>
+					<div class="left">
+						<div class="upload-container boxsized">
+							<h4>Upload Image</h4>
+							<form action="" id="uploader">
+								<ul class="forms">
+									<li>
+										<input type="file">
+									</li>
+								</ul>
+							</form>
+							<br>
+							<a class="btn green">Upload</a>
+							<hr>					
+						</div>
+					</div>
+					<hr>
+					<div class="buttons">
+						<div class="next-arrow right"><a href="/client/bawnk/profile.html">Save</a></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer id="footer">
+			<div class="width fix">
+				<nav>
+					<img src="images/bawnk-logo-footer.png" alt="Bawnk">
+					<p>&copy; Bawnk Inc. 2014</p>
+				</nav>
+				<nav>
+					<a href="#">About Bawnk</a>
+					<a href="#">Careers</a>
+					<a href="#">Press</a>
+					<a href="#">Affiliates</a>
+					<a href="#">Privacy Policy</a>
+				</nav>
+				<nav>
+					<a href="#">Meet Local Singles</a>
+					<a href="#">New York Singles</a>
+					<a href="#">Los Angeles Singles</a>
+					<a href="#">Seattle Singles</a>
+					<a href="#">Miami Singles</a>
+				</nav>
+				<nav>
+					<a href="#">Dating Apps</a>
+					<a href="#">iPhone App</a>
+					<a href="#">Android App</a>
+					<a href="#">Windows Phone App</a>
+				</nav>
+				<nav class="last">
+					<a href="#" class="social-fb">Facebook</a>
+					<a href="#" class="social-tw">Twitter</a>
+				</nav>
+				<div class="fix"></div>
+			</div>
+		</footer>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.0.js"></script>
+		<script type="text/javascript" src="js/jquery.imgareaselect.pack.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.modalclose').click(function(){
+					$('.modal').add('.shade').fadeOut('fast');
+					$('body > .modal > .modal-container > div').hide();
+				});
+				$('.submit').click(function(e){
+					e.preventDefault();
+					window.location = '/client/bawnk/profile.html';
+				});
+				$('#photo-add .main-image img').imgAreaSelect({
+			        handles: true,
+			        aspectRatio: '3:4'
+			    });
+			});
+		</script>
+			
+	</body>
+</html>

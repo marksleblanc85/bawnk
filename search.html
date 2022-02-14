@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bawnk! Join the fun!</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Content/style.css">
+    <link rel="stylesheet" href="Content/jquery.mCustomScrollbar.css">
+    
+</head>
+<body class="sub">
+    <div class="shade"></div>
+    <div class="width relative">
+        <div id="messages-container">
+            <div id="messages-tab">
+                <a href="javascript:void(0);" class="messages">Messages <span id="notificationCount2">0</span>
+                </a>
+            </div>
+            <img src="Content/images/messages-wedge.png" class="wedge">
+            <div id="messages-box">
+                <div class="messages-header">
+                    <!--<img src="Content/images/loading-purple.gif" class="messages-loader">-->
+                    <a href="" class="sendmsg">Send Message</a>
+                    <a href="javascript:closeMessages();" class="messageclose right">
+                        <img src="Content/images/btn-close.png"></a>
+                    <hr>
+                </div>
+                <ul id="user-list" class="scroll">
+                </ul>
+                <div class="right" id="right">
+                    <div id="message-details" class="boxsized">
+                        <ul id="message-ul"></ul>
+                    </div>
+                    <ul class="forms">
+                        <li>
+                            <input id="currentConvo" type="hidden" value=""/> 
+                            <input id="displayName" type="hidden" value="Fancy"/> 
+                            <textarea name="send-message" id="send-message" class="boxsized" placeholder="Send a message..."></textarea>
+                        </li>
+                        <li>
+                            <a href="" class="btn right">Send</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="messages-footer">
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="modal">
+            <form id="quick-message-container" class="modal-container invert">
+                <a href="javascript:void(0);" class="modalclose">
+                    <img src="Content/images/btn-close.png"></a>
+                <h2>Send a Message</h2>
+                <ul class="forms">
+                    <li>
+                        <input type="hidden" name="userId" id="quick-message-user" class="text">
+                        <textarea name="body" id="new-message" placeholder="Type a message..." required></textarea>
+                    </li>
+                    <li class="buttons">
+                        <a href="javascript:void(0);" class="btn modalclose left">Cancel</a>
+                        <input type="submit" class="btn green right" value="Send">
+                    </li>
+                </ul>
+            </form>
+            <div class="modal-container" id="featured-user">
+                <h1>test</h1>
+            </div>
+        </div>
+    </div>
+    <header id="header" class="width">
+        <a href="/">
+            <img src="Content/images/bawnk-logo.png" class="logo" height="82" alt="Bawnk">
+        </a>
+        
+            <nav id="sitenav" class="left">
+                <a href="/profile" class="home">Home</a>
+                <a href="javascript:showMessages();" class="messages">Messages <span id="notificationCount">0</span>
+                </a>
+                <a href="/match" class="matches active">Matches</a>
+                <a href="/favorites" class="favorites">Favorites</a>
+                <a href="/visitors" class="visitors">Visitors</a>
+                <a href="/search" class="search">Search</a>
+            </nav>
+        
+        <div class="right">
+            <a href="javascript:void(0);" class="toggle" data-modal-target="login">
+                <img src="http://bawnk-uploads.s3.amazonaws.com/27e3c04cfb534b25a2e7571e6137066f_thumb.jpg" class="avatar-small-circular">Fancy</a>
+            <div class="corner-container textright">
+                <img src="http://bawnk-uploads.s3.amazonaws.com/27e3c04cfb534b25a2e7571e6137066f_thumb.jpg" class="left avatar-circular">
+                <h5 class="textright">Options</h5>
+                <br>
+                <a href="javascript:void(0);">Manage Account</a><br>
+                <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        <hr>
+        <br>
+    </header>
+    <div class="width">
+        <div id="featured-users">
+            <a href="javascript:void(0);" class="you toggle" data-modal-target="featured-user">
+                <img src="Content/images/you.jpg" alt="">
+            </a>
+            <ul>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+                <li><a href="#"><img src="Content/images/featured-img-placeholder.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <hr>
+    </div>
+    
+    <div id="search-details">
+        <form id="search-form" method="POST" action="/search">
+            <div class="filters width boxsized">
+                <div class="left">
+                    <h1>Search Users</h1>
+                    <a href="javascript:void(0);" onclick="clearFields();">Clear Fields</a>
+                </div>
+                <div class="right">
+                    <ul class="forms">
+                        <li class="left first">
+                            <input type="checkbox" id="online-only" name="online-only" class="left">
+                            <label for="online-only" class="left">Online Only</label>
+                        </li>
+                        <li class="left">
+                            <h5>Age</h5>
+                            <input type="text" class="text small left" name="age-start" id="age-start" maxlength="2">
+                            <span class="left">- </span>
+                            <input type="text" class="text small right" name="age-end" id="age-end" maxlength="2">
+                            <hr>
+                        </li>
+                        <!--<li class="left">
+							<h5>Height</h5>
+							<input type="text" class="text small left" id="height-start" maxlength="2">
+							<span class="left"> - </span>
+							<input type="text" class="text small right" id="height-end" maxlength="2">
+							<hr>
+						</li>-->
+                        <li class="fix"></li>
+                    </ul>
+                </div>
+                <hr>
+                <ul class="forms dropdowns">
+                    <li>
+                        <select name="distance" id="distance">
+                            <option value="">Any Distance</option>
+                            <option value="5">5 mi</option>
+                            <option value="25">25 mi</option>
+                            <option value="50">50 mi</option>
+                            <option value="100">100 mi</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="gender" id="gender">
+                            <option value="">Any Sex</option>
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="orientation" id="orientation">
+                            <option value="">Any Orientation</option>
+                            <option value="1">Straight</option>
+                            <option value="2">Bi</option>
+                            <option value="4">Gay</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="ethnicity" id="ethnicity">
+                            <option value="">Any Ethnicity</option>
+                            <option value="1">Caucasion</option>
+                            <option value="2">African American</option>
+                            <option value="3">Hispanic</option>
+                            <option value="4">Indian</option>
+                            <option value="5">Middle Eastern</option>
+                            <option value="6">Native American</option>
+                            <option value="7">Asian</option>
+                            <option value="8">Mixed Race</option>
+                            <option value="9">Other Ethnicity</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="sort" id="sort">
+                            <option value="">Sort By</option>
+                            <option value="1">Last Visit</option>
+                            <option value="2">Distance</option>
+                            <option value="3">Newest Users</option>
+                        </select>
+                    </li>
+                    <li><a href="javascript:void(0);" onclick="submitSearch()" class="btn boxsized">Update</a></li>
+                    <li class="fix"></li>
+                </ul>
+                <hr>
+                <hr>
+            </div>
+        </form>
+        <div id="search-results" class="width">
+	<ul id="" class="user-grid-list row"><li id=""><a id="" href="/profile/7615466" class="img-container"><img class="badge" src="/client/bawnk/Content/images/icon-new-user.png"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/f082d3eb139749f48ba6662291e61382_thumb.jpg"></img></a><h6 id="" class="name">Sweepy</h6><p id="">34 / Male in Sacramento, CA</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;7615466&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;7615466&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/21832074" class="img-container"><img class="badge" src="/client/bawnk/Content/images/icon-verified-user.png"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/9f58f02ae2c44e56ae128be681fceb2f_thumb.jpg"></img></a><h6 id="" class="name">Valerie</h6><p id="">43 / Female in Dallas, TX</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;21832074&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;21832074&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/44505281" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/6c3d87bb5be1458795a3c5ed2236c0a1_thumb.jpg"></img></a><h6 id="" class="name">Deborah</h6><p id="">44 / Female in Tracy, CA</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;44505281&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;44505281&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/72645063" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/0ae8899fa1194fda98ab749ddb1f0cbe_thumb.jpg"></img></a><h6 id="" class="name">Anna~Nascent</h6><p id="">32 / Female in Littleton, CO</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;72645063&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;72645063&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id="" class="last"><a id="" href="/profile/2333801" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/93a3606f22cb4d99b54b3e5564b61020_thumb.jpg"></img></a><h6 id="" class="name">Susan</h6><p id="">49 / Female in Canton, OH</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;2333801&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;2333801&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li></ul><hr id=""></hr><ul id="" class="user-grid-list row"><li id=""><a id="" href="/profile/128693709" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/158cecf3ba9c4a2884b9a45315614d8b_thumb.jpg"></img></a><h6 id="" class="name">????????</h6><p id="">43 / Female in Richardson, TX</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;128693709&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;128693709&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/654011121" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/1d5c9158152d4dd0b6b0ed66906928a7_thumb.jpg"></img></a><h6 id="" class="name">MINDY</h6><p id="">41 / Female in San Diego, CA</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;654011121&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;654011121&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/49286501" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/7200bf31b93e4761b95bd08d3f8f8698_thumb.jpg"></img></a><h6 id="" class="name">*Kari</h6><p id="">22 / Female in Detroit, MI</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;49286501&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;49286501&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/678266835" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/dc9243f511a244fa8f4b9532d042a8b1_thumb.jpg"></img></a><h6 id="" class="name">Nightlover</h6><p id="">46 / Female in Milwaukee, WI</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;678266835&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;678266835&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id="" class="last"><a id="" href="/profile/3366455" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/38c2ffccd0f24928b875e3fae0d7a34d_thumb.jpg"></img></a><h6 id="" class="name">Melanie</h6><p id="">47 / Female in Brooklyn, NY</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;3366455&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;3366455&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li></ul><hr id=""></hr><ul id="" class="user-grid-list row"><li id=""><a id="" href="/profile/91639353" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/a0de6f32171948aebf2da0c22bbecbb4_thumb.jpg"></img></a><h6 id="" class="name">Babygirl727</h6><p id="">28 / Female in Birmingham, AL</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;91639353&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;91639353&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/690692004" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/c7f20afca2894d9abe9103335bdaa409_thumb.jpg"></img></a><h6 id="" class="name">Jennifer</h6><p id="">31 / Female in Los Angeles, CA</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;690692004&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;690692004&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/721080161" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/2b414cdfe448457abd890d69e5aa8391_thumb.jpg"></img></a><h6 id="" class="name">Tracey</h6><p id="">46 / Female in Bridgeport, CT</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;721080161&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;721080161&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id=""><a id="" href="/profile/74008587" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/f9a47534f90d4592ba11305fa3fceac9_thumb.jpg"></img></a><h6 id="" class="name">KAyLA</h6><p id="">21 / Female in San Antonio, TX</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;74008587&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;74008587&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li><li id="" class="last"><a id="" href="/profile/99105534" class="img-container"><img id="" src="http://bawnk-uploads.s3.amazonaws.com/ebc1dfb5a8594f8aa645fba127686740_thumb.jpg"></img></a><h6 id="" class="name">!</h6><p id="">42 / Female in Tacoma, WA</p><footer id="" class="contact"><a id="" href="javascript:void(0);" class="left" onclick="quickFavorite(&#39;99105534&#39;);"><img id="" src="Content/images/icon-favorite-yellow.png" alt="Favorite this user" title="Favorite this user"></img></a><a id="" href="javascript:void(0);" class="modalopen left" onclick="quickMessage(&#39;99105534&#39;);"><img id="" src="Content/images/icon-message-dk.png" alt="Message this user" title="Message this user"></img></a><a id="" class="right"><img id="" src="Content/images/icon-user-bawnk.png" alt="Bawnk" title="Bawnk"></img></a></footer></li></ul>
+</div>
+        <hr>
+    </div>
+    <hr>
+    <nav id="pagination" class="pagination"><a href="/search/1" class="arrow">&lt;</a><a href="/search/1" class="active">1</a><a href="/search/2">2</a><a href="/search/3">3</a><a href="/search/2" class="arrow">&gt;</a></nav>
+
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.0.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.cookies.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.deserialize.min.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.cycle.all.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="Content/js/scripts.js"></script>
+    
+    <script type="text/javascript">
+        function quickMessage(userId) {
+            if (userId == null) return;
+            $('#quick-message-user').val(userId);
+        }
+        function quickFavorite(userId) {
+            if (userId == null) return;
+            $.ajax({
+                type: "GET",
+                url: "/favorites/" + userId,
+            });
+            // TODO: set favorite icon to yellow here
+        }
+        function clearFields() {
+            $('.filters .text').add('.filters select').val('');
+            $('.filters input[type="checkbox"]').prop('checked', false);
+        }
+        function submitSearch() {
+            var form = $('#search-form');
+            $.cookie("sugar", form.serialize());
+            $('#search-form').submit();
+        }
+        $(function () {
+            if ($.cookie('sugar') == null) {
+                $('#age-start').val('18');
+                $('#age-end').val('30');
+                $.cookie('sugar', $('#search-form').serialize());
+            }
+            $('#search-form').deserialize($.cookie('sugar'));
+            $('#quick-message-container').submit(function(e) {
+                e.preventDefault();
+                var messageBody = $('#new-message').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/messages/send",
+                    data: { userId: $('#quick-message-user').val(), body: messageBody }
+                }).done(function(response) {
+                    if (response) {
+                        $('#new-message').val('');
+                        $('#quick-message-container > ul > li.buttons > input').val('Sent Message!');
+                        setTimeout(function() {
+                            $('.modal').add('.shade').fadeOut('fast');
+                            $('#quick-message-container > ul > li.buttons > input').val('Send!');
+                        }, 1500);
+                    }
+                });
+            });
+            $('body').click(function (e) {
+                var target = $(e.target);
+                if (!target.is('#messages-container') && !$('#messages-container').has(target).length > 0) {
+                    if ($('#messages-container').is(':visible')) {
+                        $('#header a.messages').click();
+                    }
+                }
+                if (!target.is('.corner-container') && !$('.corner-container').has(target).length > 0) {
+                    if ($('.corner-container').is(':visible')) {
+                        $('#header .toggle').click();
+                    }
+                }
+            });
+            if ($('.shade').is(':visible')) {
+                $('.shade').click(function () {
+                    alert('shade clicked');
+                    $(this).add('.modal').fadeOut();
+                });
+            }
+            $('#header .toggle').toggle(function () {
+                $(this).css('background-position', 'right top');
+                $('.corner-container').fadeIn();
+            }, function () {
+                $(this).css('background-position', 'right bottom');
+                $('.corner-container').fadeOut();
+            });
+            $('.modalopen').click(function () {
+                $('.modal').add('.shade').fadeIn('fast');
+                $('.modal:visible').css('top', ($(window).height() / 2 - parseInt($('.modal:visible .modal-container').css('height'))) + 'px');
+                $('.modal .' + $(this).attr('data-target')).show();
+            })
+            $('.modalclose').click(function () {
+                $(this).closest('.modal').add('.shade').fadeOut('fast');
+            });
+            $('.messageclose').click(function () {
+                $('#messages-container div#messages-tab a').click();
+            });
+            $('.shade').click(function () {
+                $('.modalclose').click();
+            });
+            $('#header .messages').click(function () {
+                $(this).addClass('active');
+                $('#messages-container').fadeIn('fast');
+            });
+            $('#messages-tab a').click(function () {
+                $(this).removeClass('active');
+                $('#messages-container').fadeOut('fast');
+            });
+        });
+    </script>
+
+    
+        <script type="text/javascript">
+
+            function showMessages() {
+                $(this).addClass('active');
+                $('#messages-container').fadeIn('fast');
+            }
+
+            function closeMessages() {
+                $(this).removeClass('active');
+                $('#messages-container').fadeOut('fast');
+            }
+            
+            function chatFavorite(userId) {
+                if (userId == null) return;
+                $.ajax({
+                    type: "GET",
+                    url: "/favorites/" + userId,
+                }).done(function(response) {
+                    $('#chat-buttons').addClass('btn-gold');
+                });
+            }
+
+            //send messages
+            function sendMessage($userId) {
+                var messageBody = $('#send-message').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/messages/send",
+                    data: { userId: $userId, body: messageBody }
+                }).done(function (response) {
+                    if (response) {
+                        if (!$('#message-ul').length) {
+                            $('#messageContainer').empty();
+                            $('#messageContainer').append('<ul id="message-ul"></ul>');
+                        }
+                        //var displayName = $('#displayName').val();
+                        var displayName = "Me";
+                        var str = "<li class='send'><p class='username chat-out'>" + displayName + " — </p><p>" + messageBody + "</p></li>";
+                        $('#message-ul').append(str);
+                        $('#send-message').val('');
+                        scrollTo('#message-details');
+                    }
+                });
+            }
+            function sendQuickMessage(formId) {
+                var data = $(formId).serialize();
+                $(formId).find('a').text('Sending');
+                $(formId).find('a').removeClass('green');
+                $(formId).find('textarea').val('');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/messages/send",
+                    data: data
+                }).success(function (response) {
+                    if (response) {
+                        $(formId).find('a').text('Message Sent!');
+                        $(formId).find('a').addClass('green');
+                        setTimeout(function () {
+                            $(formId).find('a').text('Send');
+                        }, 5000);
+                    }
+                });
+            }
+
+            //get convos
+            function getConvo($userId) {
+                //set all items to inactive
+                var listItems = $("#user-list li");
+                listItems.each(function (index, li) {
+                    $("#" + li.id).removeClass('active');
+                });
+
+                //set selected item to active
+                $("#message-details").addClass('ajax-load');
+                $("#thread-" + $userId).addClass('active');
+                $('#message-ul').empty();
+                
+                //get convo for selected item
+                $.ajax({
+                    type: "GET",
+                    url: "/messages/" + $userId,
+                }).done(function (response) {
+                    if (response) {
+                        $("#unread-" + $userId).hide();
+                        $('#right').replaceWith(response);
+                    }
+                }).always(function() {
+                    $("#message-details").removeClass('ajax-load');
+                    $('#currentConvo').val($userId);
+                    scrollTo('#message-details');
+                });
+            }
+            
+            //get notifications
+            function getNotifications() {
+                $.ajax({
+                    type: "GET",
+                    url: "/messages/new",
+                }).done(function (response) {
+                    var obj = JSON.parse(response);
+                    var count = obj.count;
+                    if (!count) {
+                        return;
+                    }
+
+                    $('#notificationCount').text(count);
+                    $('#notificationCount2').text(count);
+
+                    for (var x in obj.convos) {
+                        var key = obj.convos[x];
+                        var userId = key.UserId;
+                        var displayName = key.DisplayName;
+                        var unreadCount = key.UnreadCount;
+                        var messages = key.Messages;
+                        
+                        //display and set unread span
+                        var exists = $('#unread-' + userId).length;
+                        if (exists == 0) {
+                            var newSpan = document.createElement('span');
+                            newSpan.id = "unread-" + userId;
+                            $('#link-' + userId).append(newSpan);
+                        }
+                        $('#unread-' + userId).removeAttr('style');
+                        $('#unread-' + userId).addClass('unread');
+                        $('#unread-' + userId).text(unreadCount);
+                        
+                        //if not current convo then continue
+                        var currentConvo = $('#currentConvo').val();
+                        if (currentConvo != userId) {
+                            continue;
+                        }
+                        
+                        //add new messages and set to read
+                        for (var y in messages) {
+                            var messageKey = messages[y];
+                            var body = messageKey.Body;
+                            var messageId = messageKey.MessageId;
+
+                            var str = "<li class='send'><p class='username'>" + displayName + "</p><p>" + body + "</p></li>";
+                            $('#message-ul').append(str);
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/messages/read",
+                                data: { messageId: messageId }
+                            });
+                        }
+                    }
+                    
+                    scrollTo('#message-details');
+                });
+            }
+            
+            function scrollTo(identifier) {
+                var distance = $(identifier).scrollTop() + $(identifier + ' li:last-child').offset().top;
+                $(identifier).stop().animate({ scrollTop: distance }, 1000);
+            }
+
+            function notificationLoop() {
+                setTimeout(function () {
+                    getNotifications();
+                    notificationLoop();
+                }, 30000);
+            }
+            
+            //get threads
+            $.ajax({
+                type: "GET",
+                url: "/messages",
+            }).done(function (response) {
+                $('#user-list').replaceWith(response);
+            }).always(function () {
+                $("#user-list").removeClass('ajax-load');
+            });
+
+            $("#user-list").addClass('ajax-load');
+            $('#currentConvo').val('');
+            getNotifications();
+            notificationLoop();
+        </script>
+    
+</body>
+</html>

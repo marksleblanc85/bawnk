@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Bawnk! Your Profile</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="imgareaselect-animated.css">
+	</head>
+	<body class="sub">
+		<div class="shade"></div>
+		<div class="width relative">
+			<div id="messages-container">
+				<div id="messages-tab">
+					<a href="javascript:void(0);" class="messages">
+						Messages <span>8</span>
+					</a>
+				</div>
+				<img src="images/messages-wedge.png" class="wedge">
+				<div id="messages-box">
+					<div class="messages-header">
+						<img src="images/loading-purple.gif" class="messages-loader">
+						<a href="" class="sendmsg">Send Message</a>
+						<a href="javascript:void(0);" class="messageclose right"><img src="images/btn-close.png"></a>
+						<hr>
+					</div>
+					<ul id="user-list">
+						<li class="active"><a href=""><span class="name">Eleanor Zissou</span><span class="unread">2</span></a></li>
+						<li><a href=""><span class="name">Ned Plimpton</span><span class="unread">6</span></a></li>
+						<li><a href=""><span class="name">Jane Winslett-Richardson</span><span class="unread">22</span></a></li>
+						<li><a href=""><span class="name">Klaus Daimler</span><span class="unread">42</span></a></li>
+						<li><a href=""><span class="name">Eleanor Zissou</span><span class="unread">2</span></a></li>
+						<li><a href=""><span class="name">Ned Plimpton</span><span class="unread">6</span></a></li>
+						<li><a href=""><span class="name">Jane Winslett-Richardson</span><span class="unread">22</span></a></li>
+						<li><a href=""><span class="name">Klaus Daimler</span><span class="unread">42</span></a></li>
+						<li><a href=""><span class="name">Klaus Daimler</span><span class="unread">42</span></a></li>
+						<li><a href=""><span class="name">Eleanor Zissou</span><span class="unread">2</span></a></li>
+						<li><a href=""><span class="name">Ned Plimpton</span><span class="unread">6</span></a></li>
+						<li><a href=""><span class="name">Jane Winslett-Richardson</span><span class="unread">22</span></a></li>
+						<li><a href=""><span class="name">Klaus Daimler</span><span class="unread">42</span></a></li>
+					</ul>
+					<div class="right">
+						<div id="message-details" class="boxsized">
+							<ul>
+								<li class="receive">
+									<p class="username">Eleanor Zissou</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+								</li>
+								<li class="send">
+									<p class="username">Eleanor Zissou</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+								</li>
+								<li class="receive">
+									<p class="username">Eleanor Zissou</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+								</li>
+							</ul>
+						</div>
+						<ul class="forms">
+							<li>
+								<textarea name="send-message" id="send-message" class="boxsized" placeholder="Send a message..."></textarea>
+							</li>
+							<li>
+								<a href="" class="btn right">Send</a>
+							</li>
+						</ul>
+					</div>					
+					<div class="messages-footer">
+						<hr>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<header id="header" class="width">
+			<a href="http://dev.marksleblanc.com/client/bawnk/">
+				<img src="images/bawnk-logo.png" class="logo" height="82" alt="Bawnk">
+			</a>
+			<nav id="sitenav" class="left">
+				<a href="http://dev.marksleblanc.com/client/bawnk/profile.html" class="home active">Home</a>
+				<a href="javascript:void(0);" class="messages">
+					Messages <span>8</span>
+				</a>
+				<a href="http://dev.marksleblanc.com/client/bawnk/matches.html" class="matches">Matches</a>
+				<a href="http://dev.marksleblanc.com/client/bawnk/favorites.html" class="favorites">Favorites</a>
+				<a href="http://dev.marksleblanc.com/client/bawnk/visitors.html" class="visitors">Visitors</a>
+				<a href="http://dev.marksleblanc.com/client/bawnk/search.html" class="search">Search</a>
+			</nav>
+			<div class="right">
+				<a href="javascript:void(0);" class="toggle" data-modal-target="login"><img src="images/avatar-small.png"> Dr. Steve Zissou</a>
+				<div class="corner-container textright">
+					<img src="images/avatar-large.png" class="left">
+					<h5 class="textright">Options</h5>
+					<a href="/client/bawnk/settings.html">Manage Account</a><br>
+					<a href="http://dev.marksleblanc.com/client/bawnk/">Log Out</a>
+				</div>
+			</div>
+			<hr><br>
+		</header>
+		<section id="profile-details" class="width">
+			<div class="left-col">
+				<div id="photo-gallery">
+					<img src="images/main-profile-picture.jpg" width="283">
+					<img src="images/main-profile-picture-2.jpg" width="283">
+					<img src="images/main-profile-picture-3.jpg" width="283">
+					<img src="images/main-profile-picture-4.jpg" width="283">
+				</div>
+				<ul id="thumbnails-pager" class="thumbnails"></ul>
+				<a href="javascript:void(0);" class="add modalopen" data-target="photo-add">Manage and Add Photos</a>
+				<hr>
+			</div>
+			<div class="right-col">
+				<h1>
+					Dr. Steve Zissou 
+					<a href="javascript:void(0);" class="edit modalopen" data-target="profile-edit" title="Edit Profile"></a>
+				</h1>
+				<p id="asl">58 / Male in Florence, Italy</p>
+				<article id="about-me">
+					<div class="basic">
+						<h3>Basic Information</h3>
+						<ul>
+							<li><span>Height</span> <span class="textright">5'7"</span></li>
+							<li><span>Orientation</span> <span class="textright">Straight</span></li>
+							<li><span>Body Type</span> <span class="textright">Slim</span></li>
+							<li><span>Height</span> <span class="textright">5'7"</span></li>
+							<li><span>Orientation</span> <span class="textright">Straight</span></li>
+							<li><span>Body Type</span> <span class="textright">Slim</span></li>
+						</ul>
+						<hr>
+					</div>
+					<h2>About Me</h2>
+					<p>Now if you'll excuse me, I'm going to go on an overnight drunk, and in 10 days I'm going to set out to find the shark that ate my friend and destroy it. Anyone who wants to join me is more than welcome.</p>
+				</article>
+			</div>
+			<hr>
+			<div class="modal" id="photo-add">
+				<div class="modal-container">
+					<a href="javascript:void(0);" class="modalclose"><img src="images/btn-close-dk.png"></a>
+					<h2>Manage &amp; Add Photos</h2>
+					<div class="details">
+						<div class="left main-image">
+							<img src="images/main-profile-picture.jpg">
+							<!--<img src="images/main-profile-picture-2.jpg">
+							<img src="images/main-profile-picture-3.jpg">
+							<img src="images/main-profile-picture-4.jpg">-->
+						</div>
+						<div class="left">
+							<div class="upload-container boxsized">
+								<h4>Upload Image</h4>
+								<input type="file" onchange="previewFile();">
+								<hr>					
+							</div>
+						</div>
+						<hr>
+						<h3>Uploaded Images</h3>
+						<div class="thumbnails">
+							<div>
+								<a href="">
+									<img src="images/main-profile-picture.jpg" width="60">
+								</a>
+								<img src="images/close-btn-sm.png" width="17" class="close">
+							</div>
+							<div>
+								<a href="">
+									<img src="images/main-profile-picture.jpg" width="60">
+								</a>
+								<img src="images/close-btn-sm.png" width="17" class="close">
+							</div>
+							<div>
+								<a href="">
+									<img src="images/main-profile-picture.jpg" width="60">
+								</a>
+								<img src="images/close-btn-sm.png" width="17" class="close">
+							</div>
+							<div>
+								<a href="">
+									<img src="images/main-profile-picture.jpg" width="60">
+								</a>
+								<img src="images/close-btn-sm.png" width="17" class="close">
+							</div>
+						</div>
+						<div class="buttons">
+							<a href="javascript:void(0);" class="btn modalclose left">Cancel</a>
+							<a href="javascript:void(0);" class="btn green modalclose right">Save</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="profile-edit">
+				<div class="modal-container">
+					<a href="javascript:void(0);" class="modalclose"><img src="images/btn-close-dk.png"></a>
+					<div>
+						<h2>Edit Your Details</h2>
+						<div class="details">
+							<ul class="forms">
+								<li>
+									<label for="height">Height</label>
+									<select name="height" id="height" class="right">
+										<option value="">Select a Height</option>
+										<option value="">4'6"</option>
+										<option value="">4'7"</option>
+										<option value="">4'8"</option>
+										<option value="">4'9"</option>
+										<option value="">5'</option>
+										<option value="">5'1"</option>
+										<option value="">5'2"</option>
+										<option value="">5'3"</option>
+										<option value="">5'4"</option>
+										<option value="">5'5"</option>
+										<option value="">5'6"</option>
+										<option value="">5'7"</option>
+										<option value="">5'8"</option>
+										<option value="">5'9"</option>
+										<option value="">6'</option>
+										<option value="">6'1"</option>
+										<option value="">6'2"</option>
+										<option value="">6'3"</option>
+										<option value="">6'4"</option>
+										<option value="">6'5"</option>
+										<option value="">6'6"</option>
+									</select>
+									<hr>
+								</li>
+								<li>
+									<label for="body-type">Body Type</label>
+									<select name="body-type" id="body-type" class="right">
+										<option value="">Select Body Type</option>
+										<option value="">Straight</option>
+										<option value="">Gay</option>
+										<option value="">Bi</option>
+									</select>
+									<hr>
+								</li>
+								<li>
+									<label for="orientation">Orientation</label>
+									<select name="orientation" id="orientation" class="right">
+										<option value="">Select Orientation</option>
+										<option value="">Straight</option>
+										<option value="">Gay</option>
+										<option value="">Bi</option>
+									</select>
+									<hr>
+								</li>
+								<li>
+									<label for="ethnicity">Ethnicity</label>
+									<select name="ethnicity" id="ethnicity" class="right">
+										<option value="">Select Ethnicity</option>
+										<option value="1">Caucasion</option>
+										<option value="2">African American</option>
+										<option value="3">Hispanic</option>
+										<option value="4">Indian</option>
+										<option value="5">Middle Eastern</option>
+										<option value="6">Native American</option>
+										<option value="7">Asian</option>
+										<option value="8">Mixed Race</option>
+										<option value="9">Other Ethnicity</option>
+									</select>
+									<hr>
+								</li>
+								<li class="last">
+									<label for="about-me">About Me</label>
+									<textarea name="about-me" id="about-me" class="right">Now if you'll excuse me, I'm going to go on an overnight drunk, and in 10 days I'm going to set out to find the shark that ate my friend and destroy it. Anyone who wants to join me is more than welcome.</textarea>
+									<hr>
+								</li>
+							</ul>
+						</div>
+						<div class="buttons">
+							<a href="javascript:void(0);" class="btn modalclose left">Cancel</a>
+							<a href="javascript:void(0);" class="btn green modalclose right">Save</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal">
+				<div class="modal-container">
+					<h2>Photo 1</h2>
+					<div class="details">
+						<figure>
+							<img src="images/photos-male.png" alt="">
+							<figcaption>Image Needed</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+			<div class="modal">
+				<div class="modal-container">
+					<h2>Photo 2</h2>
+					<div class="details">
+						<figure>
+							<img src="images/photos-male.png" alt="">
+							<figcaption>Image Needed</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+			<div class="modal">
+				<div class="modal-container">
+					<h2>Photo 3</h2>
+					<div class="details">
+						<figure>
+							<img src="images/photos-male.png" alt="">
+							<figcaption>Image Needed</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+			<div class="modal">
+				<div class="modal-container">
+					<h2>Photo 4</h2>
+					<div class="details">
+						<figure>
+							<img src="images/photos-male.png" alt="">
+							<figcaption>Image Needed</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.0.js"></script>
+		<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="js/jquery.imgareaselect.pack.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script>
+		<script type="text/javascript">
+			function addImgAreaSelect(img){
+		        img.addClass('imgAreaSelect').imgAreaSelect({
+	                handles : true,
+	                aspectRatio : '3:4',
+	                fadeSpeed : 1,
+	                show : true,
+	                instance: true
+		        });
+		        img.load(function(){ // display initial image selection 3:4
+	                var height = ( this.width / 3 ) * 4;
+	                if( height <= this.height ){     
+                        var diff = ( this.height - height ) / 2;
+                        var coords = { x1 : 0, y1 : diff, x2 : this.width, y2 : height + diff };
+	                }   
+	                else{ // if new height out of bounds, scale width instead
+                        var width = ( this.height / 3 ) * 4; 
+                        var diff = ( this.width - width ) / 2;
+                        var coords = { x1 : diff, y1 : 0, x2 : width + diff, y2: this.height };
+	                }   
+	            	$( this ).imgAreaSelect( coords );
+		        });
+			}
+			function previewFile() {
+				var preview = document.querySelector('.main-image img');
+				var file    = document.querySelector('input[type=file]').files[0];
+				var reader  = new FileReader();
+
+				reader.onloadend = function () {
+					preview.src = reader.result;
+				}
+
+				if (file) {
+					reader.readAsDataURL(file);
+					$('.main-image img').imgAreaSelect({
+				        handles: true,
+				        aspectRatio: '3:4',
+				        show: true
+				    });
+				} else {
+					preview.src = "";
+				}
+			}
+
+			$(function() {
+				var area = $('#photo-add .main-image img').imgAreaSelect({
+			        handles: true,
+			        aspectRatio: '3:4',
+			        show: true,
+			        instance: true
+			    });
+				$('#photo-gallery').cycle({
+					fx: 'scrollHorz',
+					pager: '#thumbnails-pager',
+					speed: 500,
+					timeout: 0,
+					pagerAnchorBuilder: function(idx, slide) { 
+				        return '<li><a href="#"><img src="' + slide.src + '" width="60" /></a></li>'; 
+				    } 
+				});
+				$('#profile-detauls .add').click(function(){
+					addImgAreaSelect();
+				});
+				$('.modal#photo-add').click(function(e){
+					var target = $(e.target);
+				    if(!target.is('.modal#photo-add') && !$('.modal#photo-add').has(target).length > 0) {
+				        if ($('.modal#photo-add').is(':visible')){
+				        	area.cancelSelection();
+				        	$('.modal').add('.shade').fadeOut();
+				        }
+				    }
+				});
+				/*$('#photo-add .main-image').cycle({
+					fx: 'scrollHorz',
+					pager: '#photo-add .thumbnails',
+					speed: 500,
+					timeout: 0,
+					pagerAnchorBuilder: function(idx, slide) { 
+				        return '<a href="#"><img src="' + slide.src + '" width="60" /></a>'; 
+				    } 
+				});*/
+				
+				$('#header a.messages').click(function(){
+					$(this).addClass('active');
+					$('#messages-container').fadeIn('fast');
+				});
+				$('#messages-tab a').add('.messageclose').click(function(){
+					$(this).removeClass('active');
+					$('#messages-container').fadeOut('fast');
+				});
+			});
+		</script>
+			
+	</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Join BAWNK! A new, FREE way to meet LOCAL SINGLES in your area!</title>
+		
+		<link rel="stylesheet" href="font-awesome.css">
+		<link rel="stylesheet" href="bootstrap.css">
+		<link rel="stylesheet" href="bootstrap-social.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="wrapper clearfix">
+			<header id="main-header">
+				<div id="header" class="container">
+					<a id="logo" href="javascript:void(0);"></a>
+					<div class="col-md-6 mobilehide">
+						<h5>a brand new <span class="lav">FREE</span> way to meet singles in YOUR area! </h5>
+					</div>
+					<div class="col-md-2 pull-right icons">
+						<a href="https://www.facebook.com/bawnk?_rdr" target="_blank"><img src="images/icon-facebook.png" alt=""></a>
+						<a href="https://plus.google.com/+Bawnkdating/posts/66NV9sKLDDv" target="_blank"><img src="images/icon-google.png" alt=""></a>
+					</div>
+				</div>
+			</header>
+			<section class="container clearfix">
+				<div class="col-md-12 text-center mb50">
+					<h1>Meet Local Singles in <span id="city" class="blue">Delray Beach</span> Now!</h1>
+					<h3 class="blue">Join BAWNK! a brand new, FREE way to meet singles in your area</h3>
+				</div>
+			</section>
+			<section class="container clearfix mb50" id="signup-container">
+				<div class="col-md-1">&nbsp;</div>
+				<div class="col-md-6 userlist">
+					<div class="col-md-4 col-sm-4 text-center">
+						<img src="images/head-1.jpg" alt="">
+						<p>sara, 28</p>
+					</div>
+					<div class="col-md-4 col-sm-4 text-center">
+						<img src="images/head-1.jpg" alt="">
+						<p>sara, 28</p>
+					</div>
+					<div class="col-md-4 col-sm-4 text-center">
+						<img src="images/head-1.jpg" alt="">
+						<p>sara, 28</p>
+					</div>
+					<div class="col-md-4 col-sm-4 text-center">
+						<img src="images/head-1.jpg" alt="">
+						<p>sara, 28</p>
+					</div>
+					<div class="col-md-4 col-sm-4 text-center">
+						<img src="images/head-1.jpg" alt="">
+						<p>sara, 28</p>
+					</div>
+					<div class="col-md-4 col-sm-4 text-center">
+						<img src="images/head-1.jpg" alt="">
+						<p>sara, 28</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-1 pull-right signup-container">
+					<div class="clearfix">
+						<a class="btn btn-lg btn-block btn-social btn-google pull-right"><i class="fa fa-google"></i> Sign up with Google</a>
+					</div>	
+					<div id="signup-form" class=" pull-right">
+						<div class="right" id="signup-wrapper">
+				            <div class="page boxsized active">
+				                <form action="" method="POST">
+				                    <h2><strong>OR</strong> create a FREE account!</h2>
+				                    <ul class="forms slide1">
+				                        <li>
+				                            <input class="text boxsized error" placeholder="First Name" name="firstName" required type="text">
+				                        </li>
+				                        <li>
+				                            <input class="text boxsized" placeholder="Last Name" name="lastName" required type="text">
+				                        </li>
+				                        <li>
+				                            <input class="text boxsized" placeholder="Email Address" name="email"  required type="text">
+				                        </li>
+				                        <li class="half pull-left selects">
+				                            <h3 class="text-center">I am a</h3>
+				                            <div class="gender-select">
+				                                <a class="opaque" href="javascript:void(0);" ng-class="getOpaque(2, signupModel.Gender)" ng-click="setGender(2)">
+				                                    <img src="images/avatar-female.png" alt="Female" title="Female" width="35">
+				                                </a>
+				                                <a class="opaque" href="javascript:void(0);" ng-class="getOpaque(1, signupModel.Gender)" ng-click="setGender(1)">
+				                                    <img src="images/avatar-male.png" alt="Male" title="Male" width="29">
+				                                </a>
+				                            </div>
+				                            <select name="gender" class="hidden select-gender ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="signupModel.Gender" required="">
+				                                <option value=""></option>
+				                                <option value="1">Male</option>
+				                                <option value="2">Female</option>
+				                            </select>
+				                        </li>
+				                        <li class="half pull-right selects">
+				                            <h3 class="text-center">Seeking a</h3>
+				                            <div class="gender-select">
+				                                <a class="opaque" href="javascript:void(0);" ng-class="getOpaque(2, signupModel.Seeking)" ng-click="setSeeking(2)">
+				                                    <img src="images/avatar-female.png" alt="Female" title="Female" width="35">
+				                                </a>
+				                                <a class="opaque" href="javascript:void(0);" ng-class="getOpaque(1, signupModel.Seeking)" ng-click="setSeeking(1)">
+				                                    <img src="images/avatar-male.png" alt="Male" title="Male" width="29">
+				                                </a>
+				                            </div>
+				                            <select name="seeking" class="hidden select-gender" ng-model="signupModel.Seeking" required="">
+				                                <option value=""></option>
+				                                <option value="1">Men</option>
+				                                <option value="2">Women</option>
+				                                <option value="3">Both</option>
+				                            </select>
+				                        </li>
+				                        <li class="clearfix"></li>
+				                        <li class="input-errors">
+				                            <div class="ng-hide" ng-show="showError(signupPage1, 'firstName')">Please enter your first name.</div>
+				                            <div class="ng-hide" ng-show="showError(signupPage1, 'lastName')">Please enter your last name.</div>
+				                            <div class="ng-hide" ng-show="showError(signupPage1, 'gender')">Please select your gender.</div>
+				                            <div class="ng-hide" ng-show="showError(signupPage1, 'seeking')">Please select your desired gender.</div>
+				                        </li>
+				                        <li>
+				                            <button type="button" class="btn next-btn" ng-click="changePage(2, signupPage1)">Create a <strong>FREE</strong> Account!</button>
+				                        </li>
+				                    </ul>
+				                </form>
+				            </div>
+				        </div>
+					</div>
+				</div>
+			</section>
+			<section class="container clearfix download">
+				<div class="col-md-12 text-center">
+					<h3 class="mb15">Download the App</h3>
+				</div>
+				<div class="col-md-6"><a href=""><img src="images/icon-appstore.png" class="pull-right"></a></div>
+				<div class="col-md-6"><a href=""><img src="images/icon-gplay.png" alt=""></a></div>
+			</section>
+			<footer class="text-center">
+				<p><a href="">Terms of Service</a> | <a href="">Contact us</a> </p>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bawnk! Join the fun!</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Content/style.css">
+    <link rel="stylesheet" href="Content/jquery.mCustomScrollbar.css">
+    
+</head>
+<body class="sub">
+    
+    <div class="shade"></div>
+    <div class="width relative">
+        
+            <div class="modal login">
+                <div class="modal-container">
+                    <a href="javascript:void(0);" class="modalclose">
+                        <img src="Content/images/btn-close.png"></a>
+                    <form id="login-container" action="/login" method="post">
+                        <img src="Content/images/bawnk-logo.png" class="logo" height="82" alt="Bawnk" width="239">
+                        <h3>Secure Log In</h3>
+                        <ul class="forms">
+                            <li>
+                                <input type="email" name="email" class="text boxsized" placeholder="Email Address" required>
+                            </li>
+                            <li>
+                                <input type="password" name="pass" class="text boxsized" placeholder="Password" required>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remember" name="remember" class="checkbox left">
+                                <label for="remember" class="left">Remember Me</label>
+                                <hr>
+                            </li>
+                            <li>
+                                <a href="/recover" class="left">Can't access your account?</a>
+                                <input type="submit" class="submit right" value="Login">
+                                <hr>
+                                <br>
+                            </li>
+                            <li class="last">
+                                <div class="facebook-connect">
+                                    <a href="" class="facebook-button">Log In with Facebook</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        
+        
+        
+    </div>
+    <header id="header" class="width">
+        <a href="/">
+            <img src="Content/images/bawnk-logo.png" class="logo" height="82" alt="Bawnk">
+        </a>
+        
+        <div class="right">
+            
+                <a href="javascript:void(0);" class="login-toggle">Member Login</a>
+            
+            
+        </div>
+        <hr>
+        <br>
+    </header>
+    
+    <section id="collect-details" class="modal-container">
+			<h2>Can't sign in?</h2>
+			<div class="details">
+				<h3></h3>
+				<ul class="forms">
+					<li class="last">
+						<h4>Forgot Your Password</h4>
+						<p>Enter your email address to reset your password.</p>
+                        <div class="generic-form-success"></div>
+                        <form id="forgotten-form" action="/recover" method="POST">
+						    <input name="email" type="text" class="text" placeholder="Email Address">
+                        </form>
+						<hr>
+						<br><br>
+						<a href="javascript:void($('#forgotten-form').submit());" class="btn green">Submit</a>
+						<br><br>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.0.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.cookies.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.deserialize.min.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.cycle.all.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="Content/js/scripts.js"></script>
+    
+    
+</body>
+</html>

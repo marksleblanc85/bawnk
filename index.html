@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bawnk! Join the fun!</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Content/style.css">
+    <link rel="stylesheet" href="Content/flipclock.css">
+    <link rel="stylesheet" href="Content/jquery.mCustomScrollbar.css">
+    
+</head>
+<body class="home">
+    <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '469538493168419',
+                status     : true, // check login status
+                cookie     : true, // enable cookies to allow the server to access the session
+                xfbml      : true  // parse XFBML
+            });
+
+            FB.Event.subscribe('auth.authResponseChange', function(response) {
+                if (response.status === 'connected') {
+                    testAPI();
+                } else if (response.status === 'not_authorized') {
+                    FB.login();
+                } else {
+                    FB.login();
+                }
+            });
+        };
+
+        // Load the SDK asynchronously
+        (function(d){
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+        // Here we run a very simple test of the Graph API after login is successful. 
+        // This testAPI() function is only called in those cases. 
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
+            });
+        }
+    </script>
+
+    <div class="shade"></div>
+    <div class="width relative">
+        
+            <div class="modal login">
+                <div class="modal-container">
+                    <a href="javascript:void(0);" class="modalclose">
+                        <img src="Content/images/btn-close.png"></a>
+                    <form id="login-container" action="/login" method="post">
+                        <img src="Content/images/bawnk-logo.png" class="logo" height="82" alt="Bawnk" width="239">
+                        <h3>Secure Log In</h3>
+                        <ul class="forms">
+                            <li>
+                                <input type="email" name="email" class="text boxsized" placeholder="Email Address" required>
+                            </li>
+                            <li>
+                                <input type="password" name="pass" class="text boxsized" placeholder="Password" required>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="remember" name="remember" class="checkbox left">
+                                <label for="remember" class="left">Remember Me</label>
+                                <hr>
+                            </li>
+                            <li>
+                                <a href="/recover" class="left">Can't access your account?</a>
+                                <input type="submit" class="submit right" value="Login">
+                                <hr>
+                                <br>
+                            </li>
+                            <li class="last">
+                                <div class="facebook-connect">
+                                    <a href="" class="facebook-button">Log In with Facebook</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        
+        
+        
+    </div>
+    <header id="header" class="width">
+        <a href="/">
+            <img src="Content/images/bawnk-logo.png" class="logo" height="82" alt="Bawnk">
+        </a>
+        
+        <div class="right">
+            
+                <a href="javascript:void(0);" class="login-toggle">Member Login</a>
+            
+            
+        </div>
+        <hr>
+        <br>
+    </header>
+    
+    <section id="signup-container" class="width">
+    	<div class="counter-container">
+    		<div class="counter"></div>
+    		<h3>Users and Counting</h3>
+    	</div>
+    	
+			<div class="facebook-connect">
+				<div class="fb-like" data-href="http://www.bawnk.com" data-width="200" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				<a href="https://twitter.com/bawnk" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @bawnk</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				<!--<a href="" class="facebook-button">Connect with Facebook</a>-->
+			</div>
+			<hr>
+			<form id="signup-form" method="post" action="/register">
+				<div id="signup-slider">
+					<div class="page boxsized active">
+						<h1>Create a Free Account!</h1>
+						<ul class="forms slide1">
+							<li>
+								<input type="text" class="text boxsized" placeholder="First Name" id="first-name" name="first-name" required>
+							</li>
+							<li>
+								<input type="text" class="text boxsized" placeholder="Last Name" id="last-name" name="last-name" required>
+							</li>
+							<li class="half left selects">
+								<h3 class="textcenter">I am a</h3>
+								<div class="gender-select">
+									<a href="javascript:void(0);" data-gender="female" class="opaque">
+										<img src="Content/images/avatar-female.png" alt="Female" title="Female" width="35">
+									</a>
+									<a href="javascript:void(0);" data-gender="male" class="opaque">
+										<img src="Content/images/avatar-male.png" alt="Male" title="Male" width="29">
+									</a>
+								</div>
+								<hr>
+								<select name="gender" id="gender" class="hidden select-gender" required>
+									<option value=""></option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select>
+							</li>
+							<li class="half left selects">
+								<h3 class="textcenter">Seeking a</h3>
+								<div class="gender-select">
+									<a href="javascript:void(0);" data-gender="female" class="opaque">
+										<img src="Content/images/avatar-female.png" alt="Female" title="Female" width="35">
+									</a>
+									<a href="javascript:void(0);" data-gender="male" class="opaque">
+										<img src="Content/images/avatar-male.png" alt="Male" title="Male" width="29">
+									</a>
+								</div>
+								<hr>
+								<select name="seeking" id="seeking" class="hidden select-gender" required>
+									<option value=""></option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select>
+							</li>
+							<li class="fix"></li>
+							<li class="buttons">
+								<div class="feedback"></div>
+								<a href="javascript:void(0);" class="next-page" hidden></a>
+								<div class="next-arrow next-page"><a href="javascript:void(0);">Next</a></div>	
+							</li>
+						</ul>
+					</div>
+					<div class="page boxsized">
+						<h2>Just a few more details...</h2>
+						<ul class="forms slide2">
+							<li>
+								<input type="email" name="email" id="signup-email" class="text boxsized" placeholder="Email Address">
+							</li>
+							<li>
+								<input type="password" name="password" class="text boxsized" placeholder="Create a Password" required>
+							</li>
+							<li class="fix">&nbsp;</li>
+							<li class="label"><label>Date of Birth</label></li>
+							<li class="half left">
+								<select id="dob_m" class="b month" name="dob_m">
+									<option value="">Month</option>
+									<option value="1">January</option>
+									<option value="2">February</option>
+									<option value="3">March</option>
+									<option value="4">April</option>
+									<option value="5">May</option>
+									<option value="6">June</option>
+									<option value="7">July</option>
+									<option value="8">August</option>
+									<option value="9">September</option>
+									<option value="10">October</option>
+									<option value="11">November</option>
+									<option value="12">December</option>
+								</select>
+							</li>
+							<li class="third left">
+								<select id="dob_d" class="b day" name="dob_d">
+									<option value="">Day</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+									<option value="19">19</option>
+									<option value="20">20</option>
+									<option value="21">21</option>
+									<option value="22">22</option>
+									<option value="23">23</option>
+									<option value="24">24</option>
+									<option value="25">25</option>
+									<option value="26">26</option>
+									<option value="27">27</option>
+									<option value="28">28</option>
+									<option value="29">29</option>
+									<option value="30">30</option>
+									<option value="31">31</option>
+								</select>
+							</li>
+							<li class="third right">
+								<select id="dob_y" class="b year" name="dob_y">
+									<option value="">Year</option>
+									<option value="2014">2014</option>
+									<option value="2013">2013</option>
+									<option value="2012">2012</option>
+									<option value="2011">2011</option>
+									<option value="2010">2010</option>
+									<option value="2009">2009</option>
+									<option value="2008">2008</option>
+									<option value="2007">2007</option>
+									<option value="2006">2006</option>
+									<option value="2005">2005</option>
+									<option value="2004">2004</option>
+									<option value="2003">2003</option>
+									<option value="2002">2002</option>
+									<option value="2001">2001</option>
+									<option value="2000">2000</option>
+									<option value="1999">1999</option>
+									<option value="1998">1998</option>
+									<option value="1997">1997</option>
+									<option value="1996">1996</option>
+									<option value="1995">1995</option>
+									<option value="1994">1994</option>
+									<option value="1993">1993</option>
+									<option value="1992">1992</option>
+									<option value="1991">1991</option>
+									<option value="1990">1990</option>
+									<option value="1989">1989</option>
+									<option value="1988">1988</option>
+									<option value="1987">1987</option>
+									<option value="1986">1986</option>
+									<option value="1985">1985</option>
+									<option value="1984">1984</option>
+									<option value="1983">1983</option>
+									<option value="1982">1982</option>
+									<option value="1981">1981</option>
+									<option value="1980">1980</option>
+									<option value="1979">1979</option>
+									<option value="1978">1978</option>
+									<option value="1977">1977</option>
+									<option value="1976">1976</option>
+									<option value="1975">1975</option>
+									<option value="1974">1974</option>
+									<option value="1973">1973</option>
+									<option value="1972">1972</option>
+									<option value="1971">1971</option>
+									<option value="1970">1970</option>
+									<option value="1969">1969</option>
+									<option value="1968">1968</option>
+									<option value="1967">1967</option>
+									<option value="1966">1966</option>
+									<option value="1965">1965</option>
+									<option value="1964">1964</option>
+									<option value="1963">1963</option>
+									<option value="1962">1962</option>
+									<option value="1961">1961</option>
+									<option value="1960">1960</option>
+									<option value="1959">1959</option>
+									<option value="1958">1958</option>
+									<option value="1957">1957</option>
+									<option value="1956">1956</option>
+									<option value="1955">1955</option>
+									<option value="1954">1954</option>
+									<option value="1953">1953</option>
+									<option value="1952">1952</option>
+									<option value="1951">1951</option>
+									<option value="1950">1950</option>
+									<option value="1949">1949</option>
+									<option value="1948">1948</option>
+									<option value="1947">1947</option>
+									<option value="1946">1946</option>
+									<option value="1945">1945</option>
+									<option value="1944">1944</option>
+									<option value="1943">1943</option>
+									<option value="1942">1942</option>
+									<option value="1941">1941</option>
+									<option value="1940">1940</option>
+									<option value="1939">1939</option>
+									<option value="1938">1938</option>
+									<option value="1937">1937</option>
+									<option value="1936">1936</option>
+									<option value="1935">1935</option>
+									<option value="1934">1934</option>
+									<option value="1933">1933</option>
+									<option value="1932">1932</option>
+									<option value="1931">1931</option>
+									<option value="1930">1930</option>
+									<option value="1929">1929</option>
+									<option value="1928">1928</option>
+									<option value="1927">1927</option>
+									<option value="1926">1926</option>
+									<option value="1925">1925</option>
+									<option value="1924">1924</option>
+									<option value="1923">1923</option>
+									<option value="1922">1922</option>
+									<option value="1921">1921</option>
+									<option value="1920">1920</option>
+									<option value="1919">1919</option>
+									<option value="1918">1918</option>
+									<option value="1917">1917</option>
+									<option value="1916">1916</option>
+									<option value="1915">1915</option>
+								</select>
+							</li>
+							<li class="fix">&nbsp;</li>
+							<li class="buttons">
+								<div class="feedback"></div>
+								<label for="signup-submit">By clicking "Signup" you agree <br>to our <a href="">Terms of Service</a> and <a href="">TL;DR legal jargon</a>.</label>
+							</li>
+							<li class="fix"></li>
+
+							<li>
+								<div class="last-arrow left back-page"><a href="javascript:void(0);">Back</a></div>
+								<input type="submit" name="signup-submit" id="signup-submit" class="submit right" value="Signup">
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</form>
+		</section>
+
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.0.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.cookies.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.deserialize.min.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.cycle.all.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="Content/js/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="Content/js/scripts.js"></script>
+    <script type="text/javascript" src="Content/js/flipclock.js"></script>
+    <script type="text/javascript">
+        function addError(msg, element) {
+            var hasError = false;
+            var children = element.find('li');
+            for (var i = 0; i < children.length; i++) {
+                var child = children[i];
+                if (child.innerText == msg) {
+                    hasError = true;
+                    break;
+                }
+            }
+            if (!hasError)
+                element.append('<li>' + msg + '</li>');
+        }
+        $(function () {
+        	var clock = $('.counter').FlipClock(132541, {
+				clockFace: 'Counter'
+			});
+
+			setTimeout(function() {
+				setInterval(function() {
+					clock.increment();
+				}, 3000);
+			});
+            $('#signup-email').focusout(function () {
+                filter = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if (!filter.test($('#signup-email').val())) {
+                    $(this).addClass('error');
+                    addError('Invalid email address.', $(this).closest('.forms').find('.feedback'));   
+                }
+            });
+            $('#signup-form').submit(function (e) {
+                filter = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if (!filter.test($('#signup-email').val())) {
+                    e.preventDefault();
+                    $('#signup-email').attr('invalid', true).addClass('error');
+                    addError('Email is required.', $('#signup-form .slide2').find('.feedback'));
+                    return true;
+                }
+            });
+            $('#login-container').submit(function (e) {
+                /*e.preventDefault();
+                $('#login-container').submit();*/
+            });
+            $('.gender-select a').click(function () {
+                $(this).parent().find('a').not(this).addClass('opaque');
+                $(this).removeClass('opaque');
+                $(this).parent().parent().find('.select-gender').val($(this).attr('data-gender'));
+            });
+            $('.next-page').click(function () {
+                $(this).closest('.forms').find('.feedback').html('');
+                if ($('#gender').val() == '') {
+                    $(".gender-select").fadeOut(750).fadeIn(750).fadeOut(750).fadeIn(750).fadeOut(750).fadeIn(750);
+                    $('#gender').attr('invalid', true).addClass('error');
+                    addError('Your gender is required.', $(this).closest('.forms').find('.feedback'));
+                }
+                if ($('#seeking').val() == '') {
+                    $(".seeking-select").fadeOut(750).fadeIn(750).fadeOut(750).fadeIn(750).fadeOut(750).fadeIn(750);
+                    $('#seeking').attr('invalid', true).addClass('error');
+                    addError('Your preference is required.', $(this).closest('.forms').find('.feedback'));
+                }
+                if ($('#first-name').val() == '') {
+                    $('#first-name').attr('invalid', true).addClass('error');
+                    addError('First Name is required.', $(this).closest('.forms').find('.feedback'));
+                }
+                if ($('#last-name').val() == '') {
+                    $('#last-name').attr('invalid', true).addClass('error');
+                    addError('Last Name is required.', $(this).closest('.forms').find('.feedback'));
+                }
+                if ($('#first-name').val() != '' && $('#last-name').val() != '') {
+                    $('#first-name').add('#last-name').attr('invalid', false)
+                    $('#signup-form #signup-slider').animate({
+                            left: '-=360px',
+                            easing: 'easeInQuad'
+                        }, {
+                            duration: 360
+                        });
+                }
+
+            });
+            $('.back-page').click(function () {
+                $('#signup-form #signup-slider').animate({
+                        left: '+=360px',
+                        easing: 'easeOutQuad'
+                    }, {
+                        duration: 360
+                    });
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
